@@ -2,18 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.XR;
 
 public class GameController : MonoBehaviour
 {
 
 
-    // Start is called before the first frame update
+    [SerializeField] private InputCtrlActions _inputCtrlActions;
+
+
     void Start()
     {
 
-    }
+        _inputCtrlActions = new InputCtrlActions();
 
+
+
+    }
 
 
     /// <summary>
@@ -90,17 +96,11 @@ public class GameController : MonoBehaviour
     };
 
 
-    //  ƒ{ƒ^ƒ“
-
-    public enum BUTTONS
-    {
-        None = 0,
-    };
-
 
     // Update is called once per frame
     void Update()
     {
+
 
     }
 }
