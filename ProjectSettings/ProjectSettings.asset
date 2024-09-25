@@ -729,7 +729,7 @@ PlayerSettings:
   webGLDecompressionFallback: 0
   webGLPowerPreference: 2
   scriptingDefineSymbols:
-    Standalone: ZIP_AVAILABLE;NUGET_PACKAGE_READY
+    Standalone: 
     Windows Store Apps: 
   additionalCompilerArguments: {}
   platformArchitecture: {}

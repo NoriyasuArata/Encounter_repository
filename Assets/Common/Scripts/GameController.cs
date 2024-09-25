@@ -15,8 +15,6 @@ public class GameController : MonoBehaviour
     void Start()
     {
 
-        _inputCtrlActions = new InputCtrlActions();
-
 
 
     }
@@ -95,6 +93,12 @@ public class GameController : MonoBehaviour
         UR,         //  âEè„
     };
 
+
+
+    public bool runFiled()
+    {
+        return Input.GetButton("Fire1");
+    }
 
 
     // Update is called once per frame

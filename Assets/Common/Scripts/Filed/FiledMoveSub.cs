@@ -13,12 +13,13 @@ public class FiledMoveSub : MonoBehaviour
     public float _subcharSpeed;
 
     private GameObject _actorMain;
+    private FiledMove _filedMove;
 
     // Start is called before the first frame update
     void Start()
     {
         _actorMain = GameObject.Find("ActorMain");
-        Debug.Log(_actorMain);
+        _filedMove = _actorMain.GetComponent<FiledMove>();
     }
 
     // Update is called once per frame
@@ -32,7 +33,12 @@ public class FiledMoveSub : MonoBehaviour
         if (distance >= _mainCharDistance)
         {
             var n = vec.normalized;
-            subpos = subpos + n * _subcharSpeed * Time.deltaTime;
+            var value = _subcharSpeed;
+            if (_filedMove.RunFiled)
+            {
+                value *= 1.5f;
+            }
+            subpos = subpos + n * value * Time.deltaTime;
             transform.position = subpos;
         }
     }
