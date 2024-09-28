@@ -13,15 +13,42 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "CommandAction",
+                    "type": "Button",
+                    "id": "cf49fc8f-080e-4e20-b025-3fbb6ce147e1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "RunMove",
+                    "type": "Button",
+                    "id": "fa2f7f3e-22a7-4062-a09d-679935190f70",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MenuAction",
+                    "type": "Button",
+                    "id": "27bce322-6925-4deb-8b7a-57785d0226fe",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
                     "name": "2D Vector",
                     "id": "495977dc-6a2f-4869-b6d9-6b961cfb8573",
-                    "path": "2DVector",
-                    "interactions": "Hold",
-                    "processors": "NormalizeVector2",
+                    "path": "2DVector(mode=2)",
+                    "interactions": "",
+                    "processors": "",
                     "groups": "",
                     "action": "Move",
                     "isComposite": true,
@@ -72,20 +99,9 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "",
-                    "id": "d96d3dd1-8c7c-40ea-a2f1-a989cf118f82",
-                    "path": "<Gamepad>/leftStick",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
                     "name": "2D VectorMainKeyBoard",
                     "id": "54bb72c5-a414-41da-b776-d28fd6a7fddf",
-                    "path": "2DVector",
+                    "path": "2DVector(mode=2)",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -118,7 +134,7 @@
                 {
                     "name": "left",
                     "id": "ff1bc170-9dad-42e9-bca0-bb2f53128d90",
-                    "path": "<Keyboard>/d",
+                    "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -129,13 +145,85 @@
                 {
                     "name": "right",
                     "id": "61746c60-e3b0-4ada-8548-38e7c03b2511",
-                    "path": "<Keyboard>/a",
+                    "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "7fd091d8-6c51-4295-ab71-c00ff53fc765",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2fc97d77-5b71-4c69-8012-b13cebe5f626",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CommandAction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fec452d7-d5f6-4c7b-bb94-9190586ce3ba",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RunMove",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5acf0776-eac1-4339-9105-f452e8e21cf7",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MenuAction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Battle",
+            "id": "81d52011-d347-48b2-bf8f-4d792193d1e8",
+            "actions": [
+                {
+                    "name": "Select[Gamepad]",
+                    "type": "Button",
+                    "id": "104bb353-bb01-4976-80da-95e4f3472636",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "039a384b-04aa-4efa-b1b9-0d005502d47f",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select[Gamepad]",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

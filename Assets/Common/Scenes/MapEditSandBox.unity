@@ -1932,68 +1932,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1 &1398195878
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1398195880}
-  - component: {fileID: 1398195879}
-  m_Layer: 0
-  m_Name: InputMessager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1398195879
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1398195878}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 67cd11ef70f79914dadcb4f9ef4d659b, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Filed
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
---- !u!4 &1398195880
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1398195878}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.4798572, y: -0.99890435, z: 0.019423485}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1531627450
 GameObject:
   m_ObjectHideFlags: 3
@@ -2485,11 +2423,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2092139223}
   - component: {fileID: 2092139222}
-  - component: {fileID: 2092139224}
   - component: {fileID: 2092139225}
   - component: {fileID: 2092139226}
   - component: {fileID: 2092139227}
-  - component: {fileID: 2092139228}
   m_Layer: 0
   m_Name: ActorMain
   m_TagString: Untagged
@@ -2564,18 +2500,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2092139224
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2092139221}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79a7d891e647d0042950cd0454985548, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2092139225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2588,6 +2512,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9c9106603b94e8439a33434924b9e3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _moveAction: {fileID: -2006161726091959836, guid: 67cd11ef70f79914dadcb4f9ef4d659b, type: 3}
+  _commandAction: {fileID: -8630204615421918784, guid: 67cd11ef70f79914dadcb4f9ef4d659b, type: 3}
+  _runAction: {fileID: 5462474317092791550, guid: 67cd11ef70f79914dadcb4f9ef4d659b, type: 3}
+  _menuAction: {fileID: 7964052298611809200, guid: 67cd11ef70f79914dadcb4f9ef4d659b, type: 3}
 --- !u!61 &2092139226
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2635,33 +2563,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &2092139228
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2092139221}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 67cd11ef70f79914dadcb4f9ef4d659b, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Filed
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
