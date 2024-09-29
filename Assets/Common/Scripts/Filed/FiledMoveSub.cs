@@ -9,9 +9,6 @@ public class FiledMoveSub : MonoBehaviour
     [SerializeField]
     public float _mainCharDistance;
 
-    [SerializeField]
-    public float _subcharSpeed;
-
     private GameObject _actorMain;
     private FiledMove _filedMove;
 
@@ -33,10 +30,10 @@ public class FiledMoveSub : MonoBehaviour
         if (distance >= _mainCharDistance)
         {
             var n = vec.normalized;
-            var value = _subcharSpeed;
+            var value = _filedMove._walk_speed;
             if (_filedMove.RunFiled)
             {
-                value *= 1.5f;
+                value = _filedMove._run_speed;
             }
             subpos = subpos + n * value * Time.deltaTime;
             transform.position = subpos;

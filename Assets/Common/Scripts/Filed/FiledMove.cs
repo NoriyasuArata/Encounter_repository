@@ -1,7 +1,9 @@
 using Cysharp.Threading.Tasks.Triggers;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor.Rendering.LookDev;
+using UnityEditor.SceneManagement;
 using UnityEditor.U2D.Path.GUIFramework;
 using UnityEditorInternal;
 using UnityEngine;
@@ -16,10 +18,10 @@ public class FiledMove : MonoBehaviour
     [SerializeField] private InputActionReference _runAction;
     [SerializeField] private InputActionReference _menuAction;
 
-
+    [SerializeField] public float _walk_speed;
+    [SerializeField] public float _run_speed;
 
     private bool _runFiled;
-
 
 
 
@@ -45,6 +47,10 @@ public class FiledMove : MonoBehaviour
 
         _runFiled = false;
         _moveVector = Vector2.zero;
+
+        _walk_speed = 2.0f;
+        _run_speed = 2.0f * 1.5f;
+
     }
 
 
@@ -78,41 +84,85 @@ public class FiledMove : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-
-
-        //  移動
-        var vec = _moveVector;
-        var value = 2.0f;
-        var pos = transform.position;
-
-
-        //_runFiled = _gameController.runFiled();
-        if (_runFiled)
+        if (isBattle() == false )
         {
-            value *= 1.5f;
+            //  移動
+            var vec = _moveVector;
+            var value = _walk_speed;
+            var pos = transform.position;
+
+
+            //_runFiled = _gameController.runFiled();
+            if (_runFiled)
+            {
+                value = _run_speed;
+            }
+
+            pos.x = pos.x + vec.x * value * Time.deltaTime;
+            pos.y = pos.y + vec.y * value * Time.deltaTime;
+            transform.position = pos;
+        }
+    }
+    private void Update()
+    {
+        BattleStart bs = gameObject.GetComponent<BattleStart>();
+        if (bs && bs._startBattle == false)
+        {
+            Destroy(bs);
         }
 
-        pos.x = pos.x + vec.x * value * Time.deltaTime;
-        pos.y = pos.y + vec.y * value * Time.deltaTime;
-        transform.position = pos;
-
-
-
     }
+    
+
+    public bool isBattle()
+    {
+        BattleStart bs = gameObject.GetComponent<BattleStart>();
+        if (bs)
+        {
+            return bs._startBattle;
+        }
+        return false;
+    }
+
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        _moveVector = context.ReadValue<Vector2>().normalized;
+        if (isBattle() || context.canceled)
+        {
+            _moveVector = Vector2.zero;
+
+        }
+        else
+        {
+            _moveVector = context.ReadValue<Vector2>();
+            float len = _moveVector.sqrMagnitude;
+            if (len > 1.0f)
+            {
+                _moveVector = _moveVector.normalized;
+            }
+        }
     }
+
 
 
     public void OnCommandAction(InputAction.CallbackContext context)
     {
         bool command = context.ReadValueAsButton();
 
-        if (command)
+        BattleStart bs = gameObject.GetComponent<BattleStart>();
+
+        if (command && (bs == null || bs._startBattle == false))
         {
-            //  コマンドの実行
+            Debug.Log(bs);
+            if (bs)
+            {
+                bs._startBattle = true;
+            }
+            else
+            {
+                bs = gameObject.AddComponent<BattleStart>();
+                bs._startBattle = true;
+            }
             Debug.Log("コマンドの実行");
         }
     }
@@ -120,11 +170,13 @@ public class FiledMove : MonoBehaviour
 
     public void OnRunAction(InputAction.CallbackContext context)
     {
+        if (isBattle()) return;
         _runFiled = context.ReadValueAsButton();
     }
 
     public void OnMenuAction(InputAction.CallbackContext context)
     {
+        if (isBattle()) return;
         bool menuOpen = context.ReadValueAsButton();
         if (menuOpen)
         {
