@@ -1,7 +1,9 @@
+using Cysharp.Threading.Tasks.Triggers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEditor.Build;
 using UnityEngine;
 
@@ -44,17 +46,20 @@ public class BattleStart : MonoBehaviour
 
             //  表示をオフ
             renderer.enabled=false;
-            
-            //  戦闘
+            _startBattle = false;
 
+            //  戦闘
+            GameObject main_cam = GameObject.Find("Main Camera");
+            Debug.Log(main_cam);
             //  バトルシーンの呼び出し
 
+            ChangeSubScene csBattle = obj.GetComponent<ChangeSubScene>();
 
-
-
-
+            Debug.Log(csBattle);
+            Debug.Log(csBattle._subScene);
+            yield return StartCoroutine(csBattle.load());
+            Debug.Log("戦闘修了");
             //  戦闘修了
-            _startBattle = false;
         }
         yield return null;
     }

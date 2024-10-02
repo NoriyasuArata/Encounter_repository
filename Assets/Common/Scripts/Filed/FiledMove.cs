@@ -84,6 +84,7 @@ public class FiledMove : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        Debug.Log(isBattle());
         if (isBattle() == false )
         {
             //  ˆÚ“®
@@ -119,6 +120,7 @@ public class FiledMove : MonoBehaviour
         BattleStart bs = gameObject.GetComponent<BattleStart>();
         if (bs)
         {
+            Debug.Log(bs._startBattle);
             return bs._startBattle;
         }
         return false;
