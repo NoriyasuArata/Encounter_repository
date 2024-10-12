@@ -23,7 +23,6 @@ public class BattleScript : MonoBehaviour
             Debug.Log("êÌì¨èCóπ");
             SceneManager.UnloadSceneAsync("BattleScene");
             _scenePushPop.pop();
-            _scenePushPop.setObjectActive(true);
         }
     }
 }

@@ -15,9 +15,17 @@ public class BattleStart : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _enumerator = null;
+    }
 
-        _enumerator = this.OnBattle();
-        this.StartCoroutine(_enumerator);
+
+    public void startBattle()
+    {
+        if (_enumerator == null)
+        {
+            _enumerator = this.OnBattle();
+            this.StartCoroutine(_enumerator);
+        }
     }
 
 
@@ -28,8 +36,8 @@ public class BattleStart : MonoBehaviour
         {
             this.StopCoroutine(_enumerator);
             this._startBattle = false;
+            Debug.Log("修了");
         }
-        Debug.Log("修了");
     }
 
     private IEnumerator OnBattle()
@@ -49,10 +57,6 @@ public class BattleStart : MonoBehaviour
             _startBattle = false;
 
             //  戦闘
-            GameObject main_cam = GameObject.Find("Main Camera");
-            Debug.Log(main_cam);
-            //  バトルシーンの呼び出し
-
             ChangeSubScene csBattle = obj.GetComponent<ChangeSubScene>();
 
             Debug.Log(csBattle);

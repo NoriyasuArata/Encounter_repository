@@ -50,6 +50,7 @@ public class ScenePushPop : MonoBehaviour
         UnityEngine.SceneManagement.Scene sc = SceneManager.GetSceneByName(_sceneName);
         Debug.Log(_sceneName);
         Debug.Log(sc);
+        SceneManager.SetActiveScene(sc);
         ScenePushPopData[] data_pool = _pushPoper.Peek();
 
         foreach (ScenePushPopData data in data_pool)
@@ -59,13 +60,13 @@ public class ScenePushPop : MonoBehaviour
                 if (obj.name == data._tagNamne)
                 {
                     obj.SetActive(data._active);
+                    Debug.Log(obj.name);
                     break;
                 }
             }
 
         }
         _pushPoper.Pop();
-        SceneManager.SetActiveScene(sc);
         Debug.Log("シーンアクティブ");
         Debug.Log(sc.name);
     }

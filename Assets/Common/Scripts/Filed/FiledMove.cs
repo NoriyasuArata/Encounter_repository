@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor.Rendering.LookDev;
 using UnityEditor.SceneManagement;
+using UnityEditor.SearchService;
 using UnityEditor.U2D.Path.GUIFramework;
 using UnityEditorInternal;
 using UnityEngine;
@@ -21,7 +22,13 @@ public class FiledMove : MonoBehaviour
     [SerializeField] public float _walk_speed;
     [SerializeField] public float _run_speed;
 
-    private bool _runFiled;
+
+
+    private bool _runFiled; //  フィールド走るフラグ
+    private bool _runFiledCommand;  //  フィールドコマンド
+
+
+    public bool isFiledCommand { get => _runFiledCommand; }
 
 
 
@@ -46,6 +53,7 @@ public class FiledMove : MonoBehaviour
         _menuAction.action.canceled += OnMenuAction;
 
         _runFiled = false;
+        _runFiledCommand = false;
         _moveVector = Vector2.zero;
 
         _walk_speed = 2.0f;
@@ -75,19 +83,16 @@ public class FiledMove : MonoBehaviour
         _menuAction.action.Disable();
     }
 
-    private CharacterController _char_collilder;
 
     void Start()
     {
-        _char_collilder = this.GetComponent<CharacterController>();
 
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        Debug.Log(isBattle());
-        if (isBattle() == false )
+        if (isBattle() == false && isFiledCommand == false )
         {
             //  移動
             var vec = _moveVector;
@@ -122,7 +127,6 @@ public class FiledMove : MonoBehaviour
         BattleStart bs = gameObject.GetComponent<BattleStart>();
         if (bs)
         {
-            Debug.Log(bs._startBattle);
             return bs._startBattle;
         }
         return false;
@@ -167,6 +171,7 @@ public class FiledMove : MonoBehaviour
                 bs = gameObject.AddComponent<BattleStart>();
                 bs._startBattle = true;
             }
+            bs.startBattle();
             Debug.Log("コマンドの実行");
         }
     }
@@ -180,12 +185,20 @@ public class FiledMove : MonoBehaviour
 
     public void OnMenuAction(InputAction.CallbackContext context)
     {
-        if (isBattle()) return;
+        if (isBattle() && isFiledCommand) return;
         bool menuOpen = context.ReadValueAsButton();
         if (menuOpen)
         {
             //  メニューオープン
             Debug.Log("メニューオープン");
+            _runFiledCommand = true;
+
+            FindGameObjectAll   find_unit = gameObject.GetComponent<FindGameObjectAll>();
+            Debug.Log(find_unit);
+            GameObject field_cmnd = find_unit.findGmaeObjectAll("FiledCommand");
+            Debug.Log(field_cmnd);
+
+            field_cmnd.SetActive(true);
         }
     }
 }
