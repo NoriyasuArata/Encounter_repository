@@ -75,10 +75,12 @@ public class FiledMove : MonoBehaviour
         _menuAction.action.Disable();
     }
 
-
+    private CharacterController _char_collilder;
 
     void Start()
     {
+        _char_collilder = this.GetComponent<CharacterController>();
+
     }
 
     // Update is called once per frame

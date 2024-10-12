@@ -8,13 +8,13 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - EventETC
+  - 
   - Water
   - UI
   - 
   - 
-  - 
-  - 
+  - Charactor
+  - SubCharactor
   - 
   - 
   - 
@@ -41,6 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: EventETC
-    uniqueID: 483835295
+  - name: Charactor
+    uniqueID: 2227643395
+    locked: 0
+  - name: SubCharactor
+    uniqueID: 1083372221
     locked: 0
