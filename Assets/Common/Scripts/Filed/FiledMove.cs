@@ -185,20 +185,28 @@ public class FiledMove : MonoBehaviour
 
     public void OnMenuAction(InputAction.CallbackContext context)
     {
-        if (isBattle() && isFiledCommand) return;
+        if (isBattle()) return;
         bool menuOpen = context.ReadValueAsButton();
         if (menuOpen)
         {
-            //  メニューオープン
-            Debug.Log("メニューオープン");
-            _runFiledCommand = true;
-
-            FindGameObjectAll   find_unit = gameObject.GetComponent<FindGameObjectAll>();
+            FindGameObjectAll find_unit = gameObject.GetComponent<FindGameObjectAll>();
             Debug.Log(find_unit);
-            GameObject field_cmnd = find_unit.findGmaeObjectAll("FiledCommand");
+            GameObject field_cmnd = find_unit.findGmaeObjectAll("FiledCmdCamera");
             Debug.Log(field_cmnd);
 
-            field_cmnd.SetActive(true);
+            if (_runFiledCommand == false)
+            {
+                //  メニューオープン
+                Debug.Log("メニューオープン");
+                _runFiledCommand = true;
+                field_cmnd.SetActive(true);
+            }
+            else
+            {
+                Debug.Log("メニュークローズ");
+                _runFiledCommand = false;
+                field_cmnd.SetActive(false);
+            }
         }
     }
 }
